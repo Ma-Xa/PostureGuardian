@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Posture Guardian</title>
+    <link rel="icon" href="images/webcam.png" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"
+      type="text/javascript"
+    ></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script src="https://unpkg.com/ml5@0.2.3/dist/ml5.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="video.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.addEventListener('message', function(event) {
+          if (event.data === 'stop') {
+            stop();
+          }
+        });
+      }
+    </script>
+    
+  </head>
+  <body>
+
+    <div class="container p-5 mt-10" > 
+       <div class="row total">
+
+          <div class="col-lg-5 p-3">
+             <h2  id="head">Posture Guardian</h2>
+             <div id="hl"></div>
+          </div>
+        
+        <div class="col-lg-1" id="vl"></div>
+          
+          <div class="col-lg-6 p-2">
+              <div class="container">
+                <div class="row" id="dev-summary">
+                   <div class="col-lg-6 mt-2 sub-left">
+                       <h2 id="dev">Developed with</h2>
+                   </div>
+                   <div class="col-lg-6 sub-right">
+                      <img src="images/logo.png" class="tfimage" width="300px" height="45px">
+                   </div>
+                </div>
+            </div> 
+          </div>
+
+        </div>  
+    </div>
+   <!--  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      Please click Allow in the Alert Box Displayed to experience this Poster Detection Alarm System
+    </div> -->
+    <marquee id="info">Пожалуйста, разрешите сайту доступ к камере.</marquee>
+    <div class="top-buffer">
+           <div class="leftdiv">
+
+              <div id="video" class="video-cont">
+              
+              </div>
+           </div>
+           <div class="rightdiv">
+              <h3 align="left"  id="div-heading">Добро пожаловать в Дальномер</h3>
+              <hr>
+              <p align="left" style="text-justify:inter-word;">
+                ---------------------------
+              </p>
+              <h5 style="color:#FF8200;text-align: left;">Инструкция:</h5>
+              <ul align="left">
+                <li>Примите правильное положение и нажмите старт</li>
+                <li>Теперь система распознает положение глаз и сохраняет его по умолчанию.</li>
+                <li>Теперь переместитесь вправо или влево от первоначального направления, прежде чем</li>
+                <li>Вы заметите предупреждающий звуковой сигнал, и экран станет размытым.</li>
+                <li>Пока вы не сядете в правильную позу, то есть в исходное положение, предупреждающий звук не прекратится.</li>
+              </ul>
+              <button onClick="start()" id="startstop">
+                Нажмите  
+              </button>
+           </div>
+    </div>
+
+    <footer>
+      <hr>
+      <p>---------------------------------------------------------------</p>
+
+    </footer>
+    
+    <!-- Audio Tag -->
+    <audio id="audioElement">
+      <source src="alert.wav" type="audio/wav" />
+    </audio>
+    
+    <!-- Video Div -->
+      <!-- Start Stop Button -->
+      
+  </body>
+</html>
